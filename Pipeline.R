@@ -72,4 +72,13 @@ url = paste0("https://www.football-data.co.uk/example.csv")
 football = read_csv(url)
 
 View(football)
+distinct(football,HomeTeam)
 
+
+football %>% 
+  filter(HomeTeam=="Arsenal" | AwayTeam=="Arsenal") 
+football %>% 
+  group_by(HomeTeam) %>% 
+  summarize(mean_Goals=mean(`Full time home goals`))
+  
+  
