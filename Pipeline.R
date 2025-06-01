@@ -18,4 +18,19 @@ ggplot(B,aes(x=gdpPercap,y=lifeExp, size=pop)) +
   geom_point(alpha=0.5) # NORMALLY SCATTER PLOT BUT SIZE LE VARIATE BHAKO CHA SO BUBBLE PLOT  
 # alpha rakhyo bhane transparency aaucha golo golo ma narakhyo bhane default =1 
 
+# Nested function calls 
+ggplot(select(filter(gapminder, continent=="Europe", year==2007), 
+              -continent,-year),aes(x=gdpPercap,y=lifeExp, size=pop)) + 
+  geom_point(alpha=0.5) 
+
+
+# pipes
+
+#X %>%
+
+gapminder %>%
+  filter(continent=="Europe", year==2007)%>%
+  select(-continent,-year)%>%
+  ggplot(aes(x=gdpPercap,y=lifeExp, size=pop)) + 
+  geom_point(alpha=0.5) 
 
